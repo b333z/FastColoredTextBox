@@ -36,32 +36,33 @@ namespace FastColoredTextBoxNS
 
         public static Platform GetOperationSystemPlatform()
         {
-            var sysInfo = new SYSTEM_INFO();
-
-            // WinXP and older - use GetNativeSystemInfo
-            if (Environment.OSVersion.Version.Major > 5 ||
-                (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor >= 1))
-            {
-                GetNativeSystemInfo(ref sysInfo);
-            }
-            // else use GetSystemInfo
-            else
-            {
-                GetSystemInfo(ref sysInfo);
-            }
-
-            switch (sysInfo.wProcessorArchitecture)
-            {
-                case PROCESSOR_ARCHITECTURE_IA64:
-                case PROCESSOR_ARCHITECTURE_AMD64:
-                    return Platform.X64;
-
-                case PROCESSOR_ARCHITECTURE_INTEL:
-                    return Platform.X86;
-
-                default:
-                    return Platform.Unknown;
-            }
+			return Platform.Unknown;
+//            var sysInfo = new SYSTEM_INFO();
+//
+//            // WinXP and older - use GetNativeSystemInfo
+//            if (Environment.OSVersion.Version.Major > 5 ||
+//                (Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor >= 1))
+//            {
+//                GetNativeSystemInfo(ref sysInfo);
+//            }
+//            // else use GetSystemInfo
+//            else
+//            {
+//                GetSystemInfo(ref sysInfo);
+//            }
+//
+//            switch (sysInfo.wProcessorArchitecture)
+//            {
+//                case PROCESSOR_ARCHITECTURE_IA64:
+//                case PROCESSOR_ARCHITECTURE_AMD64:
+//                    return Platform.X64;
+//
+//                case PROCESSOR_ARCHITECTURE_INTEL:
+//                    return Platform.X86;
+//
+//                default:
+//                    return Platform.Unknown;
+//            }
         }
     }
 

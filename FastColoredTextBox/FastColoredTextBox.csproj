@@ -12,7 +12,6 @@
     <AssemblyName>FastColoredTextBox</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,7 +36,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.XML" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutocompleteItem.cs" />
@@ -49,9 +48,6 @@
     <Compile Include="Export.cs" />
     <Compile Include="GoToForm.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GoToForm.designer.cs">
-      <DependentUpon>GoToForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Hints.cs" />
     <Compile Include="LinesAccessor.cs" />
@@ -89,6 +85,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="VisualMarker.cs" />
+    <Compile Include="GoToForm.Designer.cs">
+      <DependentUpon>GoToForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FastColoredTextBox.resx">

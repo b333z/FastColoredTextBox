@@ -119,11 +119,11 @@ namespace FastColoredTextBoxNS
         public FastColoredTextBox()
         {
             //register type provider
-            TypeDescriptionProvider prov = TypeDescriptor.GetProvider(GetType());
-            object theProvider =
-                prov.GetType().GetField("Provider", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(prov);
-            if (theProvider.GetType() != typeof (FCTBDescriptionProvider))
-                TypeDescriptor.AddProvider(new FCTBDescriptionProvider(GetType()), GetType());
+            //TypeDescriptionProvider prov = TypeDescriptor.GetProvider(GetType());
+            //object theProvider =
+            //    prov.GetType().GetField("Provider", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(prov);
+            //if (theProvider.GetType() != typeof (FCTBDescriptionProvider))
+            //    TypeDescriptor.AddProvider(new FCTBDescriptionProvider(GetType()), GetType());
             //drawing optimization
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
@@ -1996,7 +1996,7 @@ namespace FastColoredTextBoxNS
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            m_hImc = ImmGetContext(Handle);
+            //m_hImc = ImmGetContext(Handle);
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -2579,11 +2579,11 @@ namespace FastColoredTextBoxNS
 
             base.WndProc(ref m);
 
-            if (ImeAllowed)
-                if (m.Msg == WM_IME_SETCONTEXT && m.WParam.ToInt32() == 1)
-                {
-                    ImmAssociateContext(Handle, m_hImc);
-                }
+//            if (ImeAllowed)
+//                if (m.Msg == WM_IME_SETCONTEXT && m.WParam.ToInt32() == 1)
+//                {
+//                    ImmAssociateContext(Handle, m_hImc);
+//                }
         }
 
         protected override void OnScroll(ScrollEventArgs se)
@@ -3987,7 +3987,7 @@ namespace FastColoredTextBoxNS
             Brush indentBrush = new SolidBrush(IndentBackColor);
             Brush paddingBrush = new SolidBrush(PaddingBackColor);
             Brush currentLineBrush =
-                new SolidBrush(Color.FromArgb(CurrentLineColor.A == 255 ? 50 : CurrentLineColor.A, CurrentLineColor));
+                new SolidBrush(Color.FromArgb(CurrentLineColor.A == 255 ? (byte)50 : (byte)CurrentLineColor.A, CurrentLineColor));
             //draw padding area
             var textAreaRect = TextAreaRect;
             //top
@@ -4163,14 +4163,14 @@ namespace FastColoredTextBoxNS
             if ((Focused || IsDragDrop) && car.X >= LeftIndent && CaretVisible)
             {
                 int carWidth = IsReplaceMode ? CharWidth : 1;
-                CreateCaret(Handle, 0, carWidth, CharHeight + 1);
-                SetCaretPos(car.X, car.Y);
-                ShowCaret(Handle);
+                //CreateCaret(Handle, 0, carWidth, CharHeight + 1);
+                //SetCaretPos(car.X, car.Y);
+                //ShowCaret(Handle);
                 using (var pen = new Pen(CaretColor))
                     e.Graphics.DrawLine(pen, car.X, car.Y, car.X, car.Y + CharHeight);
             }
-            else
-                HideCaret(Handle);
+            //else
+            //    HideCaret(Handle);
 
             //draw disabled mask
             if (!Enabled)
